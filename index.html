@@ -1,0 +1,74 @@
+<html>
+	<head>
+		<title>Aspect Ratio Converter</title>
+		<style>
+			input[type="number"] {
+			  width: 45px;
+			}
+			.aspect-ratio-converter {
+				display: flex;
+				flex-direction: column;
+				width: 200px;
+				border: 1px solid #ccc;
+				padding: 15px;
+			}
+			.aspect-ratio-converter label {
+        	margin-top: 10px;
+				display: block;
+			}
+			.aspect-ratio-converter hr {
+				margin-top: 10px;
+				margin-bottom: 10px;
+				border: 1px solid #ccc;
+			}
+			.aspect-ratio-converter .btn {
+				margin-top: 10px;
+				padding: 8px;
+				background: #eee;
+				border: 0;
+				cursor: pointer;
+				width: 100%;
+			}
+			.aspect-ratio-converter .output {
+				margin-top: 10px;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="aspect-ratio-converter">
+			<label>Aspect Ratio</label>
+			<div>
+				<input type="number" id="widthInput" placeholder="Width">
+				x
+        	<input type="number" id="heightInput" placeholder="Height">
+			</div>
+			<hr>
+			<button class="btn" onclick="convertRatio()">Convert</button>
+			<div class="output"></div>
+		</div>
+		<script>
+			function convertRatio(){
+				let width = document.getElementById("widthInput").value;
+				let	height = document.getElementById("heightInput").value;
+
+				let output = "";
+
+				if(!width ||
+           	!height){
+					return;
+				}
+
+				let ratio = width/height;
+
+				output += "Small Size: " + (width * 0.5) + " x " + (height * 0.5) + "<br>";
+				output += "Medium Size: " + (width * 0.75) + " x " + (height * 0.75) + "<br>";
+				output += "Large Size: " + width + " x " + height + "<br>";
+				output += "X-Large Size: " +
+          (width * 1.25) + " x " + (height * 1.25) + "<br>";
+
+				document.querySelector('.output').innerHTML = output;
+			}
+		</script>
+	</body>
+</html>
